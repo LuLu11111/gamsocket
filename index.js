@@ -1,5 +1,6 @@
 const port = process.env.PORT || 10008;
 const server= require("http").Server();
+var request = require("request");
 
 var io = require("socket.io")(server);
 
@@ -15,6 +16,16 @@ io.on("connection", function(socket){
   socket.on("username", function(data){
         console.log("user is giving username:"+data);
       
+       request.post({
+    uri:"http://sugarlabvan.ca/postart/games.php",
+    form:{
+        name:data
+    }
+             },(err, resp, body)=>{
+
+              
+    console.log(err,resp,body);
+});
       
       
         usernames.push(data);
