@@ -15,16 +15,7 @@ io.on("connection", function(socket){
   socket.on("username", function(data){
         console.log("user is giving username:"+data);
       
-      request.post({
-    uri:"http://sugarlabvan.ca/postart/games.php",
-    form:{
-        name:data
-    }
-             },(err, resp, body)=>{
-
-              
-    console.log(err,resp,body);
-});
+      
       
         usernames.push(data);
         
